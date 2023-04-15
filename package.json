@@ -1,0 +1,28 @@
+{
+  "name": "meta-js",
+  "version": "1.0.6",
+  "description": "meta-js framework",
+  "main": "src/main/Index.js",
+  "scripts": {
+    "test": "nyc --reporter=html --reporter=json-summary mocha  'src/test/**/*.test.js' --exit --require mocha-suppress-logs && npm run badges",
+    "test:verbose": "nyc --reporter=html --reporter=json-summary mocha  'src/test/**/*.test.js' --exit  && npm run badges",
+    "badges": "badges4cov --source=nyc_json --nyc_json_file_location=./coverage/coverage-summary.json --output_folder=./coverage",
+    "scan" :  "node src/main/node/Index.js"
+  },
+  "author": "JRichardsz <jrichardsz.java@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "badges4cov": "git+https://github.com/jrichardsz/badges4cov.git",
+    "chai": "4.3.7",
+    "colors": "^1.4.0",
+    "mocha": "10.2.0",
+    "mocha-suppress-logs": "^0.3.1",
+    "nyc": "^15.1.0"
+  },
+  "dependencies": {
+    "glob": "^10.0.0",
+    "node-recursive-directory": "^1.2.0",
+    "nodejs-require-enhancer": "github:jrichardsz/nodejs-require-enhancer#1.0.0-beta",
+    "uuid": "^9.0.0"
+  }
+}
