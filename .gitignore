@@ -5,7 +5,6 @@
 nohup.out
 .export
 *.asp
-*.test.js
 !/coverage
 /coverage/*
 !/coverage/lines.svg

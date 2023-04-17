@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <link rel="stylesheet" href="main.css">
+  <link rel="icon" href="data:,">
+  <script>
+    var IS_SELECTED = false;
+  </script>
+  <title>@title</title>
+</head>
+
+<body style="overflow-x: hidden;" >
+  
+  <div id="app" style="position: absolute;" >
+    <div id="header">
+      <h1>@title</h1>
+      <p>
+        <label for="cars">Choose a node:</label>
+  
+        <!-- <select required id="artifactSelect">
+          <option value="999" >Select here</option>
+          <option v-for="node in nodesForSelect" :value="node.position" :label="node.name" >{{ node.name }}</option>
+        </select> -->
+        <!-- :get-option-label="getOptionLabel" -->
+
+        <vue-select 
+          class="custom-vue-select"
+          id="artifactSelect"
+          :options="nodesForSelect"
+          label="name"
+          placeholder="Select here"
+          v-model="inputsearch"
+        ></vue-select>
+        <!-- <button @click="filterData()" >Reload Data</button> -->
+        <!-- https://codingexample.com/vue-call-component-outside/ -->
+        <!-- <button @click="selectNodeOption()" >Show Relationships</button> -->
+        <button @click="$refs.c.selectNode()" >Show Relationships</button>
+        <button @click="$refs.c.restart()" >Clear selection</button>
+      </p>
+    </div>
+    <dependency-graph :data="data" :inputsearch="inputsearch" @restar-input-search="onRestarInputSearch" ref="c" ></dependency-graph>
+  </div>
+  <div class="ajax-loader">
+    <img src="https://www.drupal.org/files/issues/throbber_12.gif" class="img-responsive" />
+  </div>
+  <script src="https://unpkg.com/vue-select@3.20.2/dist/vue-select.js"></script>
+  
+  <link rel="stylesheet" href="https://unpkg.com/vue-select@latest/dist/vue-select.css">
+  <script src="index.js"></script>
+  <script src="vue.js"></script>
+</body>
